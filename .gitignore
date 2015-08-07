@@ -1,0 +1,7 @@
+*.sdf
+DanceClub/DanceClub.sln
+*.vcxproj
+DanceClub/DanceClub/DanceClub.vcxproj.user
+*.ipch
+DanceClub/DanceClub/DanceClub.vcxproj.filters
+*.suo
