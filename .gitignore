@@ -5,3 +5,15 @@ DanceClub/DanceClub/DanceClub.vcxproj.user
 *.ipch
 DanceClub/DanceClub/DanceClub.vcxproj.filters
 *.suo
+*.tlog
+*.manifest
+*.log
+*.pdb
+*.exe
+*.ilk
+*.obj
+*.idb
+*.rc
+*.cache
+*.lastbuildstate
+*.res

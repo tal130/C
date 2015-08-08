@@ -4,19 +4,25 @@
 #ifndef __HUMAN_H
 #define __HUMAN_H
 
+#include "Address.h"
+
 class Human
 {
-	private:
+	protected:
 		char* name;
 		int age;
+		Address address;
 
 	public:
-		Human();
+		Human(char* name, int age);
+		Human(const Human&);
 		~Human();
 		
 		void setName(const char*);
 		const char* getName() const;
+		void setAge(const int);
+		const int getAge() const;
 
-		void toString() const;
+
 };
 #endif //__HUMAN_H
