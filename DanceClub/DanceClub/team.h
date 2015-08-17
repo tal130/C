@@ -5,6 +5,7 @@
 
 #include "Dancer.h"
 #include "Teacher.h"
+
 class Team{
 private:
 	Dancer ** dancers;
