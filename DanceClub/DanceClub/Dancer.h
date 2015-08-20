@@ -20,6 +20,8 @@ class Dancer : virtual public Human
 		const char* getStyle() const;
 		void setLevel(const int);
 		const int getLevel() const;
+		const Dancer operator<(const Dancer dancer) const;
+		const Dancer operator>(const Dancer dancer) const;
 
 };
 #endif //__DANCER_H
