@@ -14,7 +14,7 @@ class Human
 		Address address;
 
 	public:
-		Human(char* name, int age);
+		Human(const char* name, int age);
 		Human(const Human&);
 		~Human();
 		

@@ -21,7 +21,7 @@ class Club
 
 
 	public:
-		Club(ClubManager manager, Address address, int maxPeople = 300, Team** team = nullptr);
+		Club(const ClubManager manager,const Address address, int maxPeople = 300, Team** team = nullptr);
 		Club(const Club&);
 		~Club();	
 
@@ -31,6 +31,7 @@ class Club
 		const Club operator<(const Club club) const; //which club consist more dancers
 		const Club operator>(const Club club) const;
 		const Club operator==(const Club club) const;
+		friend ostream& operator<<(ostream& os, const Club& c);
 };
 
 #endif //__CLUB_H

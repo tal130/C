@@ -6,15 +6,20 @@
 #include "Dancer.h"
 #include "Teacher.h"
 
-class Team{
+class Team
+{
+
 private:
 	Dancer ** dancers;
 	Teacher teacher;
 
 public:
-	Team(const Teacher& teacher, const Dancer ** const dancers = nullptr);
+	Team(const Teacher& teacher,int numOfDancers=10);
 	~Team();
 	Team(const Team&);
+
+	void addDancer(Dancer* dancer);
+	friend ostream& operator<<(ostream& os, const Team& team);
 };
 
 #endif //__TEAM_H

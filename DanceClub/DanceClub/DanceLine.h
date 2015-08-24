@@ -1,5 +1,3 @@
-#pragma once 
-
 #ifndef __DANCELINE_H
 #define __DANCELINE_H
 
@@ -13,7 +11,7 @@ class DanceLine
 		Producer producer;
 
 	public:
-		DanceLine(int startHour, int startday, Producer producer);
+		DanceLine(int startHour, int startday, const Producer producer);
 
 		const DanceLine operator+(const int days) const;	//startday + days
 		const DanceLine& operator--();	//startday --

@@ -3,6 +3,9 @@
 #ifndef __DANCER_H
 #define __DANCER_H
 
+#include <iostream>
+using namespace std;
+
 #include "Human.h"
 
 class Dancer : virtual public Human
@@ -12,7 +15,7 @@ class Dancer : virtual public Human
 		char* style;
 
 	public:
-		Dancer(const int);
+		Dancer(int);	//TODO need to add human to constructor. its vitual so need to check how to do this
 		Dancer(const Dancer&);
 		~Dancer();
 		
@@ -22,6 +25,8 @@ class Dancer : virtual public Human
 		const int getLevel() const;
 		const Dancer operator<(const Dancer dancer) const;
 		const Dancer operator>(const Dancer dancer) const;
+
+		friend ostream& operator<<(ostream& os, const Dancer& d);
 
 };
 #endif //__DANCER_H

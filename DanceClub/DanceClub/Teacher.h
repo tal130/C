@@ -7,14 +7,18 @@
 
 class Teacher : virtual public Human
 {
+	static const int MAX_LENGTH= 10;
+
 	protected: 
 		int level;
-		char* style;
+		char style[MAX_LENGTH];
 
 	public:
-		Teacher();
-		Teacher(const Teacher&);
-		~Teacher();
+		Teacher(int level);
+		void setStyle(char* style);
+		char* getStyle();
+		friend ostream& operator<<(ostream& os, const Teacher& t);
+
 };
 
 #endif //__TEACHER_H
