@@ -7,13 +7,14 @@
 
 class ClubsNetwork
 {
+	static const int MAX_LENGTH= 5;
 	private:
-		Club** clubs;
+		Club* clubs[MAX_LENGTH];
 
 	public:
 		ClubsNetwork();
-		ClubsNetwork(const ClubsNetwork&);
-		~ClubsNetwork();
+		//ClubsNetwork(const ClubsNetwork&);
+		//~ClubsNetwork();
 		
 		void addClub(Club* club);
 		static Club* biggestClub();

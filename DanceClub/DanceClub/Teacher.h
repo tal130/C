@@ -15,6 +15,8 @@ class Teacher : virtual public Human
 
 	public:
 		Teacher(int level);
+		int getLevel() const;
+		void setLevel(int level);
 		void setStyle(char* style);
 		char* getStyle();
 		friend ostream& operator<<(ostream& os, const Teacher& t);

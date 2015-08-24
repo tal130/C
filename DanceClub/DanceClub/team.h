@@ -19,6 +19,10 @@ public:
 	Team(const Team&);
 
 	void addDancer(Dancer* dancer);
+	Teacher getTeacher();
+	void setTeacher(Teacher& teacher);
+	Dancer** getDancers();
+
 	friend ostream& operator<<(ostream& os, const Team& team);
 };
 
