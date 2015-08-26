@@ -20,12 +20,35 @@ void printClub(Club* club);
 void main()
 {
 	ClubsNetwork network;
-	int num = 2;	//TODO get num of clubs in the netwok
+
+	int num;	//TODO get num of clubs in the netwok
+	cout << "Enter number of clubs " << endl;
+	cin >> num;
 	for(int i=0; i< num; i++)
 	{
+		int expirience, income, age, streetnumber, postal;
+		char	tmpName[21], tmpCity[21] ,tmpStreet[32];
 		//get club manager
-		ClubManager manager(Human("tal",40), 15, 10000);
-		Address address("Holon","No where",23,4444);
+		cout << "Enter manager name of club number " +i << endl;
+		cin.getline(tmpName, 21);
+		cout << "Enter Manager Age  " << endl;
+		cin >> age;
+		cout << "Enter Manager Expirience  " << endl;
+		cin >> expirience;
+		cout << "Enter Manager Income  " << endl;
+		cin >> income;
+		ClubManager manager(Human(tmpName,age), expirience, income);
+
+		cout << "Enter Club's city "  << endl;
+		cin.getline(tmpCity, 21);
+		cout << "Enter Club's Street " << endl;
+		cin.getline(tmpStreet, 21);
+		cout << "Enter Club's Street Number  " << endl;
+		cin >> streetnumber;
+		cout << "Enter Club's Postal Number" << endl;
+		cin >> postal;
+
+		Address address(tmpCity,tmpStreet,streetnumber,postal);
 		Club* club = new Club(manager,address);
 		addTeams(club);
 	}
@@ -40,11 +63,23 @@ void main()
 
 Dancer** getDancers(int num)
 {
+	//?what? it gets num but you want to get the number?
+
 	Dancer** dancers = new Dancer*[num];
+
 	for(int i=0; i<num; i++)
 	{
-		//cin << "get number";
-		dancers[i] = new Dancer(4, Human("ido",3));	//TODO get num from user
+		char tmpName[21];
+		int age, level;
+
+		cout << "Enter Dancer's name " << endl;
+		cin.getline(tmpName, 21);
+		cout << "Enter Dancer's  age  " << endl;
+		cin >> age;
+		cout << "Enter Dancer's level" << endl;
+		cin >> level;
+
+		dancers[i] = new Dancer(level, Human(tmpName, age));	//TODO get num from user
 	}
 	return dancers;
 }
@@ -52,18 +87,38 @@ Dancer** getDancers(int num)
 
 void addTeams(Club* club)
 {
-	//get number of teams from user
-	//TODO
-	int num = 2;
-	for(int i=0;i<num; i++)
+	int NumOfTeams;
+	int numOfDancers;
+	char tmpName[21];
+	int age, level;
+	cout << "Enter Number of teams " << endl;
+	cin >> NumOfTeams;
+
+	
+	
+	for (int i = 0; i<NumOfTeams; i++)
 	{
-		int level = 5;	//TODO get from user
-		Teacher teacher(level);
-		int numOfDancers= 10;	//get from user
+		cout << "Enter Teacher's name " << endl;
+		cin.getline(tmpName, 21);
+		cout << "Enter Teacher's  age  " << endl;
+		cin >> age;
+		cout << "Enter Teacher's level" << endl;
+		cin >> level;
+		Teacher teacher(level, Human(tmpName, age));
+		cout << "Enter Number of teams " << endl;
+		cin >> numOfDancers;
+
+		int numOfDancer= 10;	//get from user
 		Team team(teacher, numOfDancers);
 		for(int j=0; j<numOfDancers; j++)
 		{
-			Dancer* dancer = new Dancer(5 ,  Human("ido", 3));
+			cout << "Enter Dancer's name " << endl;
+			cin.getline(tmpName, 21);
+			cout << "Enter Dancer's  age  " << endl;
+			cin >> age;
+			cout << "Enter Dancer's level" << endl;
+			cin >> level;
+			Dancer* dancer = new Dancer(level, Human(tmpName, age));
 			team.addDancer(dancer);
 		}
 	}
@@ -72,9 +127,25 @@ void addTeams(Club* club)
 
 void addDanceLine(Club* club)
 {
+	char tmpName[21];
+	int age, level, years, StartHour, StartDay;
+
 	//TODO get from user
-	Producer* producer = new Producer( Teacher(5), Dancer(5, Human("ido", 3)) , 32);	
-	DanceLine* danceLine= new DanceLine(22, 1, *producer);
+	cout << "Enter producer's name " << endl;
+	cin.getline(tmpName, 21);
+	cout << "Enter producer's  age  " << endl;
+	cin >> age;
+	cout << "Enter producer's level" << endl;
+	cin >> level;
+	cout << "Enter producer's years" << endl;
+	cin >> years;
+	Producer* producer = new Producer(Teacher(level, Human(tmpName, age)), Dancer(level, Human(tmpName, age)), years);
+	cout << "Enter danceLine's StartHour" << endl;
+	cin >> StartHour;
+	cout << "Enter danceLine's Day[ 1- to sunday, 7 to saturday]" << endl;
+	cin >> StartDay;
+
+	DanceLine* danceLine = new DanceLine( StartHour, Day(StartDay), *producer);
 	club->addDanceLine(*danceLine);
 }
 

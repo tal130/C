@@ -14,7 +14,7 @@ class Teacher : virtual public Human
 		char style[MAX_LENGTH];
 
 	public:
-		Teacher(int level);
+		Teacher(int level, Human&);
 		int getLevel() const;
 		void setLevel(int level);
 		void setStyle(char* style);

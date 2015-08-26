@@ -2,7 +2,7 @@
 #define __DANCELINE_H
 
 #include "Producer.h"
-
+enum Day { Sunday, Monday, Tuesday, Wendsday, Thursday, Friday, Saturday };
 class DanceLine
 {
 	private: 
@@ -11,7 +11,7 @@ class DanceLine
 		Producer producer;
 
 	public:
-		DanceLine(int startHour, int startday, const Producer producer);
+		DanceLine(int startHour, Day startday, const Producer producer);
 
 		const DanceLine operator+(const int days) const;	//startday + days
 		const DanceLine& operator--();	//startday --
