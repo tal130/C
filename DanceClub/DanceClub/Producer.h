@@ -13,7 +13,8 @@ class Producer : public Teacher, public Dancer
 		int years;		//Years of experience
 
 	public:
-		Producer(const Teacher& teacher, const Dancer& dancer, int years) : Human(dancer.getName(), dancer.getAge()), Dancer(dancer.getLevel()), Teacher(teacher.getLevel()){}
+		Producer(const Teacher& teacher, const Dancer& dancer, int years) : 
+			Human(dancer.getName(), dancer.getAge()), Dancer(dancer.getLevel(),  Human( dancer.getName(), dancer.getAge() ) ), Teacher(teacher.getLevel()){}
 
 };
 

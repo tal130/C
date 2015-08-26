@@ -44,7 +44,7 @@ Dancer** getDancers(int num)
 	for(int i=0; i<num; i++)
 	{
 		//cin << "get number";
-		dancers[i] = new Dancer(4);	//TODO get num from user
+		dancers[i] = new Dancer(4, Human("ido",3));	//TODO get num from user
 	}
 	return dancers;
 }
@@ -63,7 +63,7 @@ void addTeams(Club* club)
 		Team team(teacher, numOfDancers);
 		for(int j=0; j<numOfDancers; j++)
 		{
-			Dancer* dancer = new Dancer(5);
+			Dancer* dancer = new Dancer(5 ,  Human("ido", 3));
 			team.addDancer(dancer);
 		}
 	}
@@ -73,7 +73,7 @@ void addTeams(Club* club)
 void addDanceLine(Club* club)
 {
 	//TODO get from user
-	Producer* producer = new Producer(Teacher(5),Dancer(5),33);	
+	Producer* producer = new Producer( Teacher(5), Dancer(5, Human("ido", 3)) , 32);	
 	DanceLine* danceLine= new DanceLine(22, 1, *producer);
 	club->addDanceLine(*danceLine);
 }
