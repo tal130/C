@@ -16,6 +16,7 @@ class Address
 		Address(const Address&);
 		~Address();
 		
+		friend ostream& operator<<(ostream& os, const Address&);
 		void setCity(const char*);
 		const char* getCity() const;
 		void setStreet(const char*);

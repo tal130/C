@@ -16,6 +16,7 @@ class DanceLine
 		const DanceLine operator+(const int days) const;	//startday + days
 		const DanceLine& operator--();	//startday --
 		void setProducer(const Producer producer);	//set producer to DanceLine
+		friend ostream& operator<<(ostream& os, const Producer&);
 
 };
 

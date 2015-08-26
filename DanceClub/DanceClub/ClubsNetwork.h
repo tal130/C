@@ -18,6 +18,7 @@ class ClubsNetwork
 		
 		void addClub(Club* club);
 		static Club* biggestClub();
+		friend ostream& operator<<(ostream& os, const ClubsNetwork&);
 
 };
 #endif //__CLUBSNETWORK_H

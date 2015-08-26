@@ -13,6 +13,8 @@ private:
 public:
 	ClubManager(Human& Human, const int expirienceYears, const int income);
 	ClubManager(const ClubManager&);
+
+	friend ostream& operator<<(ostream& os, const ClubManager&);
 };
 
 #endif //__CLUBMANAGER_H
