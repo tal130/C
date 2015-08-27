@@ -12,7 +12,6 @@ using namespace std;
 #include "team.h"
 #include "ClubsNetwork.h"
 
-Dancer** getDancers(int num);
 void addTeams(Club* club);
 void addDanceLine(Club* club);
 void printClub(Club* club);
@@ -21,7 +20,7 @@ void main()
 {
 	ClubsNetwork network;
 
-	int num;	//TODO get num of clubs in the netwok
+	int num;	
 	cout << "Enter number of clubs " << endl;
 	cin >> num;
 	for(int i=0; i< num; i++)
@@ -60,31 +59,6 @@ void main()
 }
 
 
-
-Dancer** getDancers(int num)
-{
-	//?what? it gets num but you want to get the number?
-
-	Dancer** dancers = new Dancer*[num];
-
-	for(int i=0; i<num; i++)
-	{
-		char tmpName[21];
-		int age, level;
-
-		cout << "Enter Dancer's name " << endl;
-		cin.getline(tmpName, 21);
-		cout << "Enter Dancer's  age  " << endl;
-		cin >> age;
-		cout << "Enter Dancer's level" << endl;
-		cin >> level;
-
-		dancers[i] = new Dancer(level, Human(tmpName, age));	//TODO get num from user
-	}
-	return dancers;
-}
-
-
 void addTeams(Club* club)
 {
 	int NumOfTeams;
@@ -108,7 +82,10 @@ void addTeams(Club* club)
 		cout << "Enter Number of teams " << endl;
 		cin >> numOfDancers;
 
-		int numOfDancer= 10;	//get from user
+		int numOfDancer;
+		cout << "get num of dancers for the team: " << endl;
+		cin >> numOfDancer;
+
 		Team team(teacher, numOfDancers);
 		for(int j=0; j<numOfDancers; j++)
 		{
@@ -129,8 +106,6 @@ void addDanceLine(Club* club)
 {
 	char tmpName[21];
 	int age, level, years, StartHour, StartDay;
-
-	//TODO get from user
 	cout << "Enter producer's name " << endl;
 	cin.getline(tmpName, 21);
 	cout << "Enter producer's  age  " << endl;

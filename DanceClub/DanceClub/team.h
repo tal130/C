@@ -21,7 +21,7 @@ public:
 	void addDancer(Dancer* dancer);
 	Teacher getTeacher();
 	void setTeacher(Teacher& teacher);
-	Dancer** getDancers(); //??? what
+	Dancer** getDancers();
 
 	friend ostream& operator<<(ostream& os, const Team& team);
 };

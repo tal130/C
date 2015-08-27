@@ -15,7 +15,7 @@ class Dancer : virtual public Human
 		char* style;
 
 	public:
-		Dancer(int level, const Human& human);	//TODO need to add human to constructor. its vitual so need to check how to do this
+		Dancer(int level, const Human& human);
 		Dancer(const Dancer&);
 		~Dancer();
 		

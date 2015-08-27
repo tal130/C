@@ -22,7 +22,7 @@ class Human
 		const char* getName() const;
 		void setAge(const int);
 		const int getAge() const;
-		virtual friend ostream& operator<<(ostream& os, const Human&);
+		friend ostream& operator<<(ostream& os, const Human&);
 
 };
 #endif //__HUMAN_H

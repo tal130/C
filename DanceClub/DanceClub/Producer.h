@@ -14,7 +14,7 @@ class Producer : public Teacher, public Dancer
 
 	public:
 		Producer(const Teacher& teacher, const Dancer& dancer, int years) : 
-			Human(dancer.getName(), dancer.getAge()), Dancer(dancer.getLevel(),  Human( dancer.getName(), dancer.getAge() ) ), Teacher(teacher.getLevel()){}
+			Human(dancer.getName(), dancer.getAge()), Dancer(dancer.getLevel(),  Human( dancer.getName(), dancer.getAge() ) ), Teacher(teacher.getLevel(),  Human( dancer.getName(), dancer.getAge() ) ){}
 
 		friend ostream& operator<<(ostream& os, const Producer& );
 
