@@ -19,3 +19,7 @@ DanceClub/DanceClub/DanceClub.vcxproj.filters
 *.res
 *.opensdf
 *.unsuccessfulbuild
+*.filters
+DisneyWorld/DisneyWorld/DisneyWorld.vcxproj.user
+*.sln
+Tal_Ron_and_Ido_Wald.rar
