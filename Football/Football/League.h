@@ -40,9 +40,9 @@ public:
 
 private:
 	int numberOfTeams;
-	Team* teams;
+	Team** teams;
 	int numberOfGames;
-	Game* games;
+	Game** games;
 	char* name;
 
 };

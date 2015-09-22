@@ -28,9 +28,9 @@ public:
 	const char* getName() const;
 	void setName(const char* name);
 
-	friend ostream& operator<<(ostream& os, const Team& league)
+	friend ostream& operator<<(ostream& os, const Team& team)
 	{
-		os << "No Implementation" << std::endl;
+		os << "Team name: " << team.name << endl;
 		return os;
 	}
 

@@ -17,7 +17,9 @@ public:
 
 	friend ostream& operator<<(ostream& os, const Game& game)
 	{
-		os << "No Implementation" << std::endl;
+		os << game.stadium << endl << game.team1 << endl << game.team2 << endl;
+		for (int i = 0; i < 4; i++)
+			os << game.referees[i] << endl;
 		return os;
 	}
 
@@ -25,7 +27,7 @@ private:
 	Stadium stadium;
 	Team team1;
 	Team team2;
-	Referee referees[4];
+	Referee* referees[4];
 
 };
 
