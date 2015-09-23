@@ -6,7 +6,7 @@ using namespace std;
 
 #include "Person.h"
 
-class Referee:Person
+class Referee: public Person
 {
 public:
 	enum Position

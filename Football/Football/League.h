@@ -15,7 +15,7 @@ public:
 	~League();
 	League& operator=(const League& other);
 
-	void start() const; //Start all the games in the league and remove them from the league
+	void start() ; //Start all the games in the league and remove them from the league
 
 	const League& operator+=(const Team& team);//Add team to the league
 	const League& operator-=(const Team& team);//Remove team to the league
@@ -26,8 +26,8 @@ public:
 	const Team& getTeam(const char* name) const;
 	void removeTeam(const char* name);
 
-	const Team* const getAllTeams() const;
-	const Game* const getAllGames() const;
+	const Team** const getAllTeams() const;
+	const Game** const getAllGames() const;
 
 	const char* getName() const;
 	void setName(const char* name);
@@ -39,8 +39,10 @@ public:
 	}
 
 private:
+	int MAXnumberOfTeams;
 	int numberOfTeams;
 	Team** teams;
+	int MAXnumberOfGames;
 	int numberOfGames;
 	Game** games;
 	char* name;

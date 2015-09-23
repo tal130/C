@@ -30,10 +30,12 @@ public:
 	}
 
 private:
-	League* leagues;
+	League** leagues;
 	int numberOfLeagues;
-	Referee* referees;
+	int MAXnumberOfLeagues;
+	Referee** referees;
 	int numberOfReferees;
+	int MAXnumberOfReferees;
 
 	Association(const Association& other);//Cannot duplicate an association
 	Association& operator=(const Association& other);
