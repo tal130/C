@@ -11,7 +11,6 @@ StaffMember::StaffMember(const Person& person, int sallary, int yearsOfExperienc
 	this->sallary = sallary;
 	this->yearsOfExperience = yearsOfExperience;
 }
-
 //getters
 int StaffMember::getSallary() const
 {

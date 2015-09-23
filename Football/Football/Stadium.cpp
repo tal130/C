@@ -6,10 +6,12 @@
 
 using namespace std;
 
-Stadium::Stadium(const char* name, int numberOfSeats, const char* location)
+Stadium::Stadium(const char* name, int numberOfSeats, const char* location) : name(NULL), location(NULL)
 {
+	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	this->numberOfSeats = numberOfSeats;
+	this->location = new char[strlen(location) + 1];
 	strcpy(this->location, location);
 }
 Stadium::Stadium(const Stadium& other)
@@ -25,8 +27,10 @@ Stadium::~Stadium()
 
 Stadium& Stadium::operator=(const Stadium& other)
 {
+	this->name = new char[strlen(other.name) + 1];
 	strcpy(this->name, other.name);
 	this->numberOfSeats = other.numberOfSeats;
+	this->location = new char[strlen(other.location) + 1];
 	strcpy(this->location, other.location);
 	return *this;
 }
@@ -49,6 +53,7 @@ const char* Stadium::getLocation() const
 //setters
 void Stadium::setName(const char* name)
 {
+	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 }
 void Stadium::setNumberOfSeats(int numberOfSeats)
@@ -57,5 +62,6 @@ void Stadium::setNumberOfSeats(int numberOfSeats)
 }
 void Stadium::setLocation(const char* location)
 {
+	this->location = new char[strlen(location) + 1];
 	strcpy(this->location, location);
 }

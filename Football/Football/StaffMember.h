@@ -10,7 +10,6 @@ class StaffMember: public Person
 {
 public:
 	StaffMember(const Person& person, int sallary, int yearsOfExperience);// : Person(person), sallary(sallary), yearsOfExperience(yearsOfExperience){};
-	
 	int getSallary() const;
 	void setSallary(int sallary);
 

@@ -26,8 +26,8 @@ public:
 	const Team& getTeam(const char* name) const;
 	void removeTeam(const char* name);
 
-	const Team** const getAllTeams() const;
-	const Game** const getAllGames() const;
+	Team** const getAllTeams() const;
+	Game** const getAllGames() const;
 
 	const char* getName() const;
 	void setName(const char* name);

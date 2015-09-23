@@ -34,4 +34,4 @@ private:
 
 };
 
-#endif // !_REFEREE_H
+#endif // __REFEREE_H

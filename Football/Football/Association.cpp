@@ -7,8 +7,8 @@
 using namespace std;
 
 Association::Association(int numberOfLeagues, int numberOfReferees) : MAXnumberOfReferees(numberOfReferees), MAXnumberOfLeagues(numberOfLeagues), numberOfReferees(0), numberOfLeagues(0), leagues(NULL),referees(NULL){
-	leagues = (League**)malloc(sizeof(League*) * MAXnumberOfReferees);
-	referees = (Referee**)malloc(sizeof(Referee*) * MAXnumberOfReferees);
+	leagues = new League*[MAXnumberOfReferees];
+	referees = new Referee*[MAXnumberOfReferees];
 }
 Association::~Association(){
 	for (int i = 0; i < numberOfLeagues; i++){

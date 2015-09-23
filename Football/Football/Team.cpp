@@ -9,18 +9,13 @@ using namespace std;
 Team::Team(const Stadium& stadium, int numberOfStaff, const char* name) : stadium(stadium)
 {
 	this->numberOfStaff = numberOfStaff;
+	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	this->staff = new StaffMember*[numberOfStaff];
 }
 Team::Team(const Team& other) : stadium(other.stadium)
 {
-	strcpy(this->name, other.name);
-	this->numberOfStaff = other.numberOfStaff;
-	this->staff = new StaffMember*[numberOfStaff];
-	for (int i = 0; i < numberOfStaff;i++)
-	{
-		this->staff[i] = new StaffMember(*other.staff[i]);
-	}
+	*this = other;
 }
 Team::~Team()
 {
@@ -35,10 +30,13 @@ Team::~Team()
 
 Team& Team::operator = (const Team& other)
 {
+	this->name = new char[strlen(other.name) + 1];
 	strcpy(this->name, other.name);
 	this->numberOfStaff = other.numberOfStaff;
 	this->stadium = other.stadium;
-	this->staff = other.staff;
+	this->staff = new StaffMember*[other.numberOfStaff];
+	for (int i = 0; i < other.staffInTeam; i++)
+		this->staff[i] = other.staff[i];
 	return *this;
 }
 
@@ -46,7 +44,8 @@ const Team& Team::operator+=(const StaffMember& staffMember)
 {
 	if (staffInTeam < numberOfStaff)
 	{
-		*this->staff[staffInTeam] = staffMember;
+		this->staff[staffInTeam] = new StaffMember(staffMember);
+		//*this->staff[staffInTeam] = staffMember;
 		this->staffInTeam++;
 	}
 	else
@@ -100,6 +99,7 @@ const char* Team::getName() const
 //setters
 void Team::setName(const char* name)
 {
+	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 }
 void Team::setStadium(const Stadium& stadium)
