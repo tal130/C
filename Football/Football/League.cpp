@@ -55,7 +55,9 @@ void League::start() { //can't be a const method since you want to remove all ga
 
 const League& League::operator+=(const Team& team){
 	if (numberOfTeams < MAXnumberOfTeams){
-		teams[numberOfTeams++] = new Team(team);
+		//teams[numberOfTeams] = &team;
+		teams[numberOfTeams] = new Team(team);
+		numberOfTeams++;
 		//*teams[numberOfTeams++] = team;
 	}
 	return *this;
@@ -68,7 +70,8 @@ const League& League::operator-=(const Team& team){ //problem you define team as
 
 const League& League::operator+=(const Game& game){
 	if (numberOfGames < MAXnumberOfGames){
-		*games[numberOfGames++] = game;
+		games[numberOfGames] = new Game(game);
+		numberOfGames++;
 	}
 	return *this;
 }//Add game to the league
@@ -86,8 +89,8 @@ const Team& League::getTeam(const char* name) const{
 }
 void League::removeTeam(const char* name){
 	for (int i = 0; i < numberOfTeams; i++){
-		if (strcmp(name, teams[i]->getName())){
-			delete teams[i];
+		if (strcmp(name, teams[i]->getName()) == 0){
+			delete this->teams[i];
 			--numberOfTeams;
 			for (int j = i; j < numberOfTeams; j++)
 				teams[i] = teams[i + 1];

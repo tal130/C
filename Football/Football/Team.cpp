@@ -20,7 +20,7 @@ Team::Team(const Team& other) : stadium(other.stadium)
 Team::~Team()
 {
 	delete[] this->name;
-	for (int i = 0; i < numberOfStaff; i++)
+	for (int i = 0; i < staffInTeam; i++)
 	{
 		delete this->staff[i];
 	}
@@ -57,8 +57,12 @@ const Team& Team::operator-=(const StaffMember& staffMember)
 {
 	for (int i = 0; i < staffInTeam; i++)
 	{
-		if (typeid(*this->staff[i]) == typeid(staffMember))
-			*this->staff[i] = *this->staff[staffInTeam];
+		if (strcmp(this->staff[i]->getName(), staffMember.getName()) == 0 && this->staff[i]->getAge() == staffMember.getAge())
+		{
+			*this->staff[i] = *this->staff[staffInTeam - 1];
+			delete this->staff[staffInTeam - 1];
+			break;
+		}
 	}
 	this->staffInTeam--;
 	return *this;

@@ -86,10 +86,16 @@ int main()
 
 	//Create the league
 	League league1("Ligat ha al", 2, 1);//two teams one game
-
 	//Add both teams to the league
 	league1 += team1;
 	league1 += team2;
+
+	//Create a game between the two teams
+	Game theGame(stadium1, team1, team2, new Referee[]{ referee1, referee2, referee3, referee4});
+
+	//Add the game to the league
+	league1 += theGame;
+
 
 	//Create the football association
 	Association association1(1, 4);//one league four referees
@@ -104,11 +110,6 @@ int main()
 	association1.addReferee(referee4);
 
 
-	//Create a game between the two teams
-	Game theGame(stadium1, team1, team2, new Referee[]{ referee1, referee2, referee3, referee4});
-
-	//Add the game to the league
-	league1 += theGame;
 
 	//Start the association - start the league - start the game
 	association1.start();
