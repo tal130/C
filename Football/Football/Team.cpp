@@ -11,7 +11,7 @@ Team::Team(const Stadium& stadium, int numberOfStaff, const char* name) : stadiu
 	this->numberOfStaff = numberOfStaff;
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
-	this->staff = new StaffMember*[numberOfStaff];
+	this->staff = new const StaffMember*[numberOfStaff];
 }
 Team::Team(const Team& other) : stadium(other.stadium)
 {
@@ -22,7 +22,7 @@ Team::~Team()
 	delete[] this->name;
 	for (int i = 0; i < staffInTeam; i++)
 	{
-		delete this->staff[i];
+		//delete this->staff[i];
 	}
 	delete[] this->staff;
 }
@@ -34,7 +34,7 @@ Team& Team::operator = (const Team& other)
 	strcpy(this->name, other.name);
 	this->numberOfStaff = other.numberOfStaff;
 	this->stadium = other.stadium;
-	this->staff = new StaffMember*[other.numberOfStaff];
+	this->staff = new const StaffMember*[other.numberOfStaff];
 	for (int i = 0; i < other.staffInTeam; i++)
 		this->staff[i] = other.staff[i];
 	return *this;
@@ -44,7 +44,7 @@ const Team& Team::operator+=(const StaffMember& staffMember)
 {
 	if (staffInTeam < numberOfStaff)
 	{
-		this->staff[staffInTeam] = new StaffMember(staffMember);
+		this->staff[staffInTeam] = &staffMember;
 		//*this->staff[staffInTeam] = staffMember;
 		this->staffInTeam++;
 	}
@@ -59,12 +59,11 @@ const Team& Team::operator-=(const StaffMember& staffMember)
 	{
 		if (strcmp(this->staff[i]->getName(), staffMember.getName()) == 0 && this->staff[i]->getAge() == staffMember.getAge())
 		{
-			*this->staff[i] = *this->staff[staffInTeam - 1];
-			delete this->staff[staffInTeam - 1];
+			this->staff[i] = this->staff[staffInTeam--];
+			//delete this->staff[staffInTeam - 1];
 			break;
 		}
 	}
-	this->staffInTeam--;
 	return *this;
 }
 

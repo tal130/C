@@ -8,21 +8,21 @@ using namespace std;
 
 League::League(char* name, int numberOfTeams, int numberOfGames) :MAXnumberOfTeams(numberOfTeams), MAXnumberOfGames(numberOfGames), numberOfGames(0), numberOfTeams(0), name(NULL), games(NULL), teams(NULL){
 	this->setName(name);
-	this->teams = new Team*[MAXnumberOfTeams];
-	this->games = new Game*[MAXnumberOfGames];
+	this->teams = new const Team*[MAXnumberOfTeams];
+	this->games = new const Game*[MAXnumberOfGames];
 }
 League::League(const League& other) : name(NULL), games(NULL), teams(NULL){
 	*this = other; // = operator
 }
 League::~League(){
 	for (int i = 0; i < numberOfGames; i++){
-		delete this->games[i];
+//		delete this->games[i];
 	}
-	delete this->games;
+	delete[] this->games;
 	for (int i = 0; i < numberOfTeams; i++){
-		delete this->teams[i];
+//		delete this->teams[i];
 	}
-	delete this->teams;
+	delete[] this->teams;
 }
 League& League::operator=(const League& other){
 
@@ -31,32 +31,30 @@ League& League::operator=(const League& other){
 	this->MAXnumberOfGames = other.MAXnumberOfGames;
 	this->numberOfGames = other.numberOfGames;
 	this->setName(other.name);
-	this->teams = new Team*[numberOfTeams];
+	this->teams = new const Team*[numberOfTeams];
 	for (int i = 0; i < numberOfTeams; i++){
 		this->teams[i] = other.teams[i];
 	}
-	this->games = new Game*[numberOfGames];
+	this->games = new const Game*[numberOfGames];
 	for (int i = 0; i < numberOfGames; i++){
 		this->games[i] = other.games[i];
 	}
 	return *this;
 }
 
-void League::start() { //can't be a const method since you want to remove all games from league!
+void League::start() const{ //can't be a const method since you want to remove all games from league!
 	for (int i = 0; i < numberOfGames; i++){
 		games[i]->start();
-		delete games[i];
 	}
-	this->numberOfGames = 0;
-	games = (Game**)realloc(games, 0);
-	games = NULL;
+	//this->numberOfGames = 0;
+	//delete[] games;
 
 } //Start all the games in the league and remove them from the league
 
 const League& League::operator+=(const Team& team){
 	if (numberOfTeams < MAXnumberOfTeams){
 		//teams[numberOfTeams] = &team;
-		teams[numberOfTeams] = new Team(team);
+		teams[numberOfTeams] = &team;
 		numberOfTeams++;
 		//*teams[numberOfTeams++] = team;
 	}
@@ -70,7 +68,7 @@ const League& League::operator-=(const Team& team){ //problem you define team as
 
 const League& League::operator+=(const Game& game){
 	if (numberOfGames < MAXnumberOfGames){
-		games[numberOfGames] = new Game(game);
+		games[numberOfGames] = &game;
 		numberOfGames++;
 	}
 	return *this;
@@ -90,18 +88,20 @@ const Team& League::getTeam(const char* name) const{
 void League::removeTeam(const char* name){
 	for (int i = 0; i < numberOfTeams; i++){
 		if (strcmp(name, teams[i]->getName()) == 0){
-			delete this->teams[i];
-			--numberOfTeams;
-			for (int j = i; j < numberOfTeams; j++)
-				teams[i] = teams[i + 1];
+			//delete this->teams[i];
+			//--numberOfTeams;
+			//for (int j = i; j < numberOfTeams; j++)
+			//	teams[i] = teams[i + 1];
+			teams[i] = teams[numberOfTeams];
+			numberOfTeams--;
 		}
 	}
 }
 
-Team** const League::getAllTeams() const{
+const Team** const League::getAllTeams() const{
 	return teams;
 }
-Game** const League::getAllGames() const{
+const Game** const League::getAllGames() const{
 	return games;
 }
 

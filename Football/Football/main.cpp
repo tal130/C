@@ -6,7 +6,7 @@
 #include "League.h"
 #include "Association.h"
 
-int main()
+void main()
 {
 	//************************************ Create team 1 *********************************
 	//Create players for team 1

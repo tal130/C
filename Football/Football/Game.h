@@ -18,8 +18,8 @@ public:
 	friend ostream& operator<<(ostream& os, const Game& game)
 	{
 		os << game.stadium << endl << game.team1 << endl << game.team2 << endl;
-		for (int i = 0; i < 4; i++)
-			os << game.referees[i] << endl;
+		for (int j = 0; j < 4; j++)
+			os << *game.referees[j] << endl;
 		return os;
 	}
 
