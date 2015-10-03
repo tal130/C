@@ -7,17 +7,17 @@
 using namespace std;
 
 Association::Association(int numberOfLeagues, int numberOfReferees) : MAXnumberOfReferees(numberOfReferees), MAXnumberOfLeagues(numberOfLeagues), numberOfReferees(0), numberOfLeagues(0), leagues(NULL),referees(NULL){
-	leagues = new League*[MAXnumberOfReferees];
-	referees = new Referee*[MAXnumberOfReferees];
+	leagues = new const League*[MAXnumberOfReferees];
+	referees = new const Referee*[MAXnumberOfReferees];
 }
 Association::~Association(){
-	for (int i = 0; i < numberOfLeagues; i++){
-		delete leagues[i];
-	}
-	delete leagues; //is it neeccessary??
-	for (int i = 0; i < numberOfLeagues; i++){
-		delete referees[i];
-	}
+//	for (int i = 0; i < numberOfLeagues; i++){
+		//delete leagues[i];
+	//}
+	delete[] leagues; //is it neeccessary??
+//	for (int i = 0; i < numberOfLeagues; i++){
+		//delete referees[i];
+//	}
 	delete referees;
 }
 

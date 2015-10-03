@@ -37,7 +37,7 @@ public:
 private:
 	char* name;
 	int numberOfStaff;
-	StaffMember** staff;
+	const StaffMember** staff;
 	Stadium stadium;
 	int staffInTeam = 0;
 
