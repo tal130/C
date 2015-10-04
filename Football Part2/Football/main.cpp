@@ -7,17 +7,16 @@
 #include "Association.h"
 #include "ArrayList.h"
 
-int main()
+void main()
 {
-
-	ArrayList<int> array2 =  ArrayList<int>();
+	ArrayList<int> array2 = ArrayList<int>();
 	array2.InsertElement(*new int(2));
-	array2.InsertElement(*new int(3));
-	array2.InsertElement(*new int(4));
-	array2.DeleteElement(0);
+	//array2.InsertElement(*new int(3));
+	//array2.InsertElement(*new int(4));
+	//array2.DeleteElement(0);
 
-	cout << array2<< endl;
-	return 0;
+	cout << array2 << endl;
+	//return 0;
 	//************************************ Create team 1 *********************************
 	//Create players for team 1
 	Person person1("Eran Zahavi", 21);
@@ -96,34 +95,37 @@ int main()
 
 	//Create the league
 	League league1("Ligat ha al", 2, 1);//two teams one game
-
 	//Add both teams to the league
 	league1 += team1;
 	league1 += team2;
-
-	//Create the football association
-	Association association1(1, 4);//one league four referees
-
-	//Add the league to the association
-	association1.addLeague(league1);
-
-	//Add the referees to the association
-	association1.addReferee(referee1);
-	association1.addReferee(referee2);
-	association1.addReferee(referee3);
-	association1.addReferee(referee4);
-
 
 	//Create a game between the two teams
 	Game theGame(stadium1, team1, team2, new Referee[]{ referee1, referee2, referee3, referee4});
 
 	//Add the game to the league
-	league1 += theGame;
+	//league1 += theGame;
+
+
+	//Create the football association
+	//Association association1(1, 4);
+
+	//Add the league to the association
+	//association1.addLeague(league1);
+
+	//Add the referees to the association
+	//association1.addReferee(referee1);
+	//association1.addReferee(referee2);
+	//association1.addReferee(referee3);
+	//association1.addReferee(referee4);
+
+
 
 	//Start the association - start the league - start the game
-	association1.start();
+	//association1.start();
 
 	//other unused operators
-	team1 -= player2;//Remove player from team
-	league1 -= team1;//remove team from league
+	//team1 -= player2;//Remove player from team
+	//league1 -= team1;//remove team from league
+
+	//return 0;
 }

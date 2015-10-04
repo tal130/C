@@ -24,7 +24,7 @@ public:
 	friend ostream& operator<<(ostream& os, const Stadium& stadium)
 	{
 		os << "Stadium:" << endl << "name: " << stadium.name << endl << "number of seats: " << stadium.numberOfSeats
-			<< "location: " << stadium.location << endl;
+			<< " location: " << stadium.location << endl;
 		return os;
 	}
 

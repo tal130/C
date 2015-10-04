@@ -30,10 +30,10 @@ public:
 	}
 
 private:
-	League** leagues;
+	const League** leagues;
 	int numberOfLeagues;
 	int MAXnumberOfLeagues;
-	Referee** referees;
+	const Referee** referees;
 	int numberOfReferees;
 	int MAXnumberOfReferees;
 

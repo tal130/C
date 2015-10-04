@@ -31,19 +31,11 @@ League& League::operator=(const League& other){
 	this->MAXnumberOfGames = other.MAXnumberOfGames;
 	this->numberOfGames = other.numberOfGames;
 	this->setName(other.name);
-<<<<<<< HEAD
-	this->teams = new Team*[MAXnumberOfTeams];
-	for (int i = 0; i < numberOfTeams; i++){
-		this->teams[i] = other.teams[i];
-	}
-	this->games = new Game*[MAXnumberOfGames];
-=======
 	this->teams = new const Team*[numberOfTeams];
 	for (int i = 0; i < numberOfTeams; i++){
 		this->teams[i] = other.teams[i];
 	}
 	this->games = new const Game*[numberOfGames];
->>>>>>> origin/master
 	for (int i = 0; i < numberOfGames; i++){
 		this->games[i] = other.games[i];
 	}
@@ -76,12 +68,8 @@ const League& League::operator-=(const Team& team){ //problem you define team as
 
 const League& League::operator+=(const Game& game){
 	if (numberOfGames < MAXnumberOfGames){
-<<<<<<< HEAD
-		*games[numberOfGames++] = game; //the problem was- no operator = in games! this game
-=======
 		games[numberOfGames] = &game;
 		numberOfGames++;
->>>>>>> origin/master
 	}
 	return *this;
 }//Add game to the league
