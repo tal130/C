@@ -7,7 +7,7 @@
 using namespace std;
 
 Association::Association(int numberOfLeagues, int numberOfReferees) : MAXnumberOfReferees(numberOfReferees), MAXnumberOfLeagues(numberOfLeagues), numberOfReferees(0), numberOfLeagues(0), leagues(NULL),referees(NULL){
-	leagues = new const League*[MAXnumberOfReferees];
+	leagues = new const League*[MAXnumberOfLeagues];
 	referees = new const Referee*[MAXnumberOfReferees];
 }
 Association::~Association(){

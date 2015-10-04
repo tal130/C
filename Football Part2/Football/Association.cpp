@@ -6,19 +6,31 @@
 
 using namespace std;
 
-Association::Association(int numberOfLeagues, int numberOfReferees) : MAXnumberOfReferees(numberOfReferees), MAXnumberOfLeagues(numberOfLeagues), numberOfReferees(0), numberOfLeagues(0), leagues(NULL),referees(NULL){
-	leagues = new const League*[MAXnumberOfReferees];
-	referees = new const Referee*[MAXnumberOfReferees];
+Association Association::theAssociation;
+
+Association* Association::getInstance()
+{
+	return &theAssociation;
 }
+
+Association::Association() : numberOfReferees(0), numberOfLeagues(0), leagues(NULL),referees(NULL){}
 Association::~Association(){
-//	for (int i = 0; i < numberOfLeagues; i++){
-		//delete leagues[i];
-	//}
-	delete[] leagues; //is it neeccessary??
-//	for (int i = 0; i < numberOfLeagues; i++){
-		//delete referees[i];
-//	}
+	delete[] leagues;
 	delete referees;
+}
+
+void Association::setNumOfLeagues(int num)
+{
+	delete[] leagues;
+	MAXnumberOfLeagues = num;
+	this->leagues = new const League*[MAXnumberOfLeagues];
+}
+
+void Association::setNumOfReferees(int num)
+{
+	delete referees;
+	MAXnumberOfReferees = num;
+	this->referees = new const Referee*[MAXnumberOfReferees];
 }
 
 void Association::start() const{
@@ -46,9 +58,7 @@ void Association::removeLeague(const char* name){
 			delete leagues[i];
 			numberOfLeagues--;
 			for (int j = i ; j < numberOfLeagues; j++)
-				leagues[i] = leagues[i + 1];
-		//	leagues = (League**)realloc(leagues ,sizeof(League*)*numberOfLeagues); -don't need cause you might want to add more
-		
+				leagues[i] = leagues[i + 1];		
 		}
 	}
 

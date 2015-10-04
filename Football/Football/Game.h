@@ -11,9 +11,11 @@ using namespace std;
 class Game
 {
 public:
-	Game(const Stadium& stadium, Team& team1 , const Team& team2 , const Referee referees[4]);
+	Game(const Stadium& stadium, Team& team1, const Team& team2 /*, const Referee referees[4]*/);
 
 	void start() const; //Show the result of the game (randomly show a score and print the names of the players who scored..)
+
+	void AddReferee(Referee& ref);
 
 	friend ostream& operator<<(ostream& os, const Game& game)
 	{
@@ -27,7 +29,9 @@ private:
 	Stadium stadium;
 	Team team1;
 	Team team2;
-	Referee* referees[4];
+	Referee** referees;
+	int sizeOfReferees;
+	static int MaxNumberOfReferees;
 
 };
 

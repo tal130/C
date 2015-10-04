@@ -7,20 +7,21 @@
 #include "Association.h"
 #include "ArrayList.h"
 
+#include <iostream>
+using namespace std;
+
+
 void main()
 {
-	ArrayList<int> array2 = ArrayList<int>();
-	array2.push(*new int(2));
-	array2.push(*new int( 3));
-	//array2.InsertElement(*new int(3));
-	//array2.InsertElement(*new int(4));
-	//array2.DeleteElement(0);
+	ArrayList<Person> array2 = ArrayList<Person>();
+	array2.push(Person("Eran Zahavi", 21));
+	array2.push(Person("Eran Zahavi", 21));
+	array2.DeleteElement(0);
+	cout <<  array2 << endl;
 
-	cout << array2 << endl;
-	cout << array2 << endl;
-	//return 0;
 	//************************************ Create team 1 *********************************
 	//Create players for team 1
+	
 	Person person1("Eran Zahavi", 21);
 	StaffMember staff1(person1, 20000, 3);
 	Player player1(staff1, Player::STRICKER, 8);
@@ -43,7 +44,7 @@ void main()
 
 	//Crete team 1
 	Team team1(stadium1, 13, "Maccabi");
-
+	
 	//Add the players and the coaches to the team
 	team1 += player1;
 	team1 += player2;
@@ -102,32 +103,39 @@ void main()
 	league1 += team2;
 
 	//Create a game between the two teams
-	Game theGame(stadium1, team1, team2, new Referee[]{ referee1, referee2, referee3, referee4});
+	Game theGame(stadium1, team1, team2/*, new Referee[]{ referee1, referee2, referee3, referee4}*/);
+
+	theGame.AddReferee(referee1);
+	theGame.AddReferee(referee2);
+	theGame.AddReferee(referee3);
+	theGame.AddReferee(referee4);
+	
 	//Add the game to the league
 	league1 += theGame;
 
 
 	//Create the football association
-	//Association association1(1, 4);
+	Association *association1 = Association::getInstance();
+	association1->setNumOfLeagues(1);
+	association1->setNumOfReferees(4);
 
 	//Add the league to the association
-	//association1.addLeague(league1);
+	association1->addLeague(league1);
 
 	//Add the referees to the association
-	//association1.addReferee(referee1);
-	//association1.addReferee(referee2);
-	//association1.addReferee(referee3);
-	//association1.addReferee(referee4);
+	association1->addReferee(referee1);
+	association1->addReferee(referee2);
+	association1->addReferee(referee3);
+	association1->addReferee(referee4);
 
 
 
 	//Start the association - start the league - start the game
-	//association1.start();
+	association1->start();
 
 	//other unused operators
-	//team1 -= player2;//Remove player from team
-	//league1 -= team1;//remove team from league
+	team1 -= player2;//Remove player from team
+	league1 -= team1;//remove team from league
 
 	//return 0;
-
 }

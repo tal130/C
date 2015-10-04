@@ -10,6 +10,7 @@ void main()
 {
 	//************************************ Create team 1 *********************************
 	//Create players for team 1
+
 	Person person1("Eran Zahavi", 21);
 	StaffMember staff1(person1, 20000, 3);
 	Player player1(staff1, Player::STRICKER, 8);
@@ -38,7 +39,7 @@ void main()
 	team1 += player2;
 	team1 += caoch1;
 	team1 += caoch2;
-	
+
 	//************************************ Create team 2 *********************************
 	//Create players for team 2
 	Person person11("Altman Omri", 21);
@@ -91,14 +92,19 @@ void main()
 	league1 += team2;
 
 	//Create a game between the two teams
-	Game theGame(stadium1, team1, team2, new Referee[]{ referee1, referee2, referee3, referee4});
+	Game theGame(stadium1, team1, team2/*, new Referee[]{ referee1, referee2, referee3, referee4}*/);
+
+	theGame.AddReferee(referee1);
+	theGame.AddReferee(referee2);
+	theGame.AddReferee(referee3);
+	theGame.AddReferee(referee4);
 
 	//Add the game to the league
 	league1 += theGame;
 
 
 	//Create the football association
-	Association association1(1, 4);//one league four referees
+	Association association1(1, 4);
 
 	//Add the league to the association
 	association1.addLeague(league1);
@@ -110,11 +116,12 @@ void main()
 	association1.addReferee(referee4);
 
 
-
 	//Start the association - start the league - start the game
 	association1.start();
 
 	//other unused operators
 	team1 -= player2;//Remove player from team
 	league1 -= team1;//remove team from league
+
+	//return 0;
 }

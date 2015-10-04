@@ -33,7 +33,8 @@ public:
 
 }
 		~ArrayList(){
-			RecursiveDeleteArray(anchor);
+			if (size > 0)
+				RecursiveDeleteArray(anchor);
 
 			//for (int i = 0; i < size; i++)
 			//	DeleteElement(0);// 0!!!!hhh
@@ -127,15 +128,16 @@ friend ostream& operator<<(ostream& os, const ArrayList& arraylist)
 			 int size = arraylist.Size();
 			 if (!size)
 				 return os;
-			  ELEMENT element = arraylist.GetElement(0);
-			// os << element << " | ";
 			 for (int i = 0; i < size; i++){
-				 element = arraylist.GetElement(i);
-				 os <<"DA2" <<2<< " ";
+				 os << arraylist.GetElement(i) << " | ";
+
 			 }
 				
 			 os << endl;
 			 return os;
 		 }
+
+
+
 };
 #endif // !ARRAYLIST

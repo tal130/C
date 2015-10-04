@@ -10,7 +10,7 @@ using namespace std;
 class Association
 {
 public:
-	Association(int numberOfLeagues, int numberOfReferees);
+	static Association* getInstance();
 	~Association();
 
 	void start() const;//Start all the leagues games (go to all the leagues and start them)
@@ -22,6 +22,9 @@ public:
 	void addReferee(const Referee& referee);
 	const Referee& getReferee(const char* name) const;
 	void removeReferee(const char* name);
+
+	void setNumOfLeagues(int num);
+	void setNumOfReferees(int num);
 
 	friend ostream& operator<<(ostream& os, const Association& association)
 	{
@@ -37,6 +40,9 @@ private:
 	int numberOfReferees;
 	int MAXnumberOfReferees;
 
+	static Association theAssociation;
+
+	Association();
 	Association(const Association& other);//Cannot duplicate an association
 	Association& operator=(const Association& other);
 };
