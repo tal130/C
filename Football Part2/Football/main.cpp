@@ -10,11 +10,13 @@
 void main()
 {
 	ArrayList<int> array2 = ArrayList<int>();
-	array2.InsertElement(*new int(2));
+	array2.push(*new int(2));
+	array2.push(*new int( 3));
 	//array2.InsertElement(*new int(3));
 	//array2.InsertElement(*new int(4));
 	//array2.DeleteElement(0);
 
+	cout << array2 << endl;
 	cout << array2 << endl;
 	//return 0;
 	//************************************ Create team 1 *********************************
@@ -101,9 +103,8 @@ void main()
 
 	//Create a game between the two teams
 	Game theGame(stadium1, team1, team2, new Referee[]{ referee1, referee2, referee3, referee4});
-
 	//Add the game to the league
-	//league1 += theGame;
+	league1 += theGame;
 
 
 	//Create the football association
@@ -128,4 +129,5 @@ void main()
 	//league1 -= team1;//remove team from league
 
 	//return 0;
+
 }
