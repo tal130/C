@@ -16,11 +16,11 @@ League::League(const League& other) : name(NULL), games(NULL), teams(NULL){
 }
 League::~League(){
 	for (int i = 0; i < numberOfGames; i++){
-//		delete this->games[i];
+
 	}
 	delete[] this->games;
 	for (int i = 0; i < numberOfTeams; i++){
-//		delete this->teams[i];
+
 	}
 	delete[] this->teams;
 }
@@ -42,26 +42,21 @@ League& League::operator=(const League& other){
 	return *this;
 }
 
-void League::start() const{ //can't be a const method since you want to remove all games from league!
+void League::start() const{ 
 	for (int i = 0; i < numberOfGames; i++){
 		games[i]->start();
 	}
-	//this->numberOfGames = 0;
-	//delete[] games;
 
-} //Start all the games in the league and remove them from the league
+} //Start all the games in the league 
 
 const League& League::operator+=(const Team& team){
 	if (numberOfTeams < MAXnumberOfTeams){
-		//teams[numberOfTeams] = &team;
 		teams[numberOfTeams] = &team;
 		numberOfTeams++;
-		//*teams[numberOfTeams++] = team;
 	}
 	return *this;
 }//Add team to the league
-const League& League::operator-=(const Team& team){ //problem you define team as object. not as pointer. can't find a way to compare between them
-	//solution make == operator for team. or define team by name- i've made it by name
+const League& League::operator-=(const Team& team){
 	this->removeTeam(team.getName());
 	return *this;
 }//Remove team to the league
@@ -88,10 +83,6 @@ const Team& League::getTeam(const char* name) const{
 void League::removeTeam(const char* name){
 	for (int i = 0; i < numberOfTeams; i++){
 		if (strcmp(name, teams[i]->getName()) == 0){
-			//delete this->teams[i];
-			//--numberOfTeams;
-			//for (int j = i; j < numberOfTeams; j++)
-			//	teams[i] = teams[i + 1];
 			teams[i] = teams[numberOfTeams];
 			numberOfTeams--;
 		}

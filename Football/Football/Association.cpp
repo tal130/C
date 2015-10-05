@@ -11,13 +11,9 @@ Association::Association(int numberOfLeagues, int numberOfReferees) : MAXnumberO
 	referees = new const Referee*[MAXnumberOfReferees];
 }
 Association::~Association(){
-//	for (int i = 0; i < numberOfLeagues; i++){
-		//delete leagues[i];
-	//}
-	delete[] leagues; //is it neeccessary??
-//	for (int i = 0; i < numberOfLeagues; i++){
-		//delete referees[i];
-//	}
+
+	delete[] leagues; 
+
 	delete referees;
 }
 
@@ -27,9 +23,10 @@ void Association::start() const{
 	}
 }
 
-void Association::addLeague(const League& league){ //problem- see document- also, do i need to throw error on maxoverlimit?
+void Association::addLeague(const League& league){
 	if (numberOfLeagues + 1 < MAXnumberOfReferees)
 		leagues[numberOfLeagues++] =  new League(league);
+	
 }
 const League& Association::getLeague(const char* name) const{
 	for (int i = 0; i < numberOfLeagues; i++)
@@ -47,7 +44,7 @@ void Association::removeLeague(const char* name){
 			numberOfLeagues--;
 			for (int j = i ; j < numberOfLeagues; j++)
 				leagues[i] = leagues[i + 1];
-		//	leagues = (League**)realloc(leagues ,sizeof(League*)*numberOfLeagues); -don't need cause you might want to add more
+		
 		
 		}
 	}
@@ -73,7 +70,7 @@ void Association::removeReferee(const char* name){
 			numberOfReferees--;
 			for (int j = i; j < numberOfReferees; j++)
 				referees[i] = referees[i + 1];
-			//referees = (Referee**)realloc(referees, sizeof(Referee*)*numberOfReferees); -don't need cause you might want to add more
+		
 		}
 	}
 

@@ -24,7 +24,7 @@ Person::~Person()
 
 Person& Person::operator=(const Person& other)
 {
-	//cout << other.name << strlen(other.name);
+	
 	this->name = NULL;
 	delete[] this->name;
 	this->name = new char[strlen(other.name) + 1];

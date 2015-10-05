@@ -34,7 +34,11 @@ public:
 
 	friend ostream& operator<<(ostream& os, const League& league)
 	{
-		os << "No Implementation" << std::endl;
+		os << "league name: " << league.name << "teams:\n" << std::endl;
+		for (int i = 0; i < league.numberOfTeams; i++)
+		{
+			os << "team " << i <<":" << league.teams[i] << endl;
+		}
 		return os;
 	}
 

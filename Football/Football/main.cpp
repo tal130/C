@@ -92,7 +92,7 @@ void main()
 	league1 += team2;
 
 	//Create a game between the two teams
-	Game theGame(stadium1, team1, team2/*, new Referee[]{ referee1, referee2, referee3, referee4}*/);
+	Game theGame(stadium1, team1, team2);
 
 	theGame.AddReferee(referee1);
 	theGame.AddReferee(referee2);
