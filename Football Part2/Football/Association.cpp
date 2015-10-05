@@ -33,7 +33,10 @@ void Association::start() const{
 
 void Association::addLeague(const League& league){
 	if (numberOfLeagues + 1 < MAXnumberOfReferees)
+	{
 		leagues.push_back(&league);
+		numberOfLeagues++;
+	}
 }
 
 const League& Association::getLeague(const string name) const{
@@ -57,6 +60,7 @@ void Association::removeLeague(const string name)
 		{
 			leagues.erase(itr);
 			numberOfLeagues--;
+			return;
 		}
 	}
 }
@@ -83,6 +87,7 @@ void Association::removeReferee(const string name){
 		{
 			referees.erase(itr);
 			numberOfReferees--;
+			return;
 		}
 	}
 

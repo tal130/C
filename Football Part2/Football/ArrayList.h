@@ -24,11 +24,12 @@ public:
 };
 
 	ArrayList() :anchor(NULL), size(0){}
-    ArrayList(const ArrayList& list) :size(list.size), anchor(new Node(list.anchor)){
+    ArrayList(const ArrayList& list) :size(list.size), anchor(list.anchor){
 	Node* d = anchor;
-	Node other = *list.anchor;
+	Node* other = list.anchor;
 	for (int i = 1; i < size; i++){
-		*d.next = *other.next;
+		(*d).next = (*other).next;
+
 	}
 
 }
@@ -91,13 +92,15 @@ public:
 			{
 				Node* e = anchor;
 				Node* e2 = e->next;
-				while (e->next != NULL || index-- >= 0)
+				while (e->next != NULL && index-- > 1)
 				{
 					e = e->next;
 					e2 = e2->next;
+					index--;
 				}
 
-				delete e;
+				e->next = e2->next;
+				delete e2;
 
 			}
 			size--;

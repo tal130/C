@@ -59,6 +59,7 @@ void League::removeTeam(const string name){
 		if (name == (*itr)->getName()){
 			teams.erase(itr);
 			numberOfTeams--;
+			return;
 		}
 	}
 }
