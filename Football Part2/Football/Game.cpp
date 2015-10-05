@@ -6,9 +6,9 @@
 
 using namespace std;
 int Game::MaxNumberOfReferees = 4;
-Game::Game(const Stadium& stadium, Team& team1, const Team& team2) : stadium(stadium), 
-team1(team1), team2(team2), sizeOfReferees(0)
-{}
+
+Game::Game(const Stadium& stadium,const Team& team1, const Team& team2) : stadium(stadium), 
+team1(team1), team2(team2), sizeOfReferees(0){}
 
 void Game::AddReferee(Referee& ref)
 {

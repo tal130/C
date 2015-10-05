@@ -24,15 +24,12 @@ public:
 };
 
 	ArrayList() :anchor(NULL), size(0){}
-    ArrayList(const ArrayList& list) :size(list.size), anchor(list.anchor){
-	Node* d = anchor;
-	Node* other = list.anchor;
-	for (int i = 1; i < size; i++){
-		(*d).next = (*other).next;
-
+	ArrayList(const ArrayList& list) :size(0), anchor(NULL){
+		int length = list.size;
+		for (int i = 0; i < length; i++)
+			this->push(list.GetElement(i));
 	}
 
-}
 		~ArrayList(){
 			if (size > 0)
 				RecursiveDeleteArray(anchor);

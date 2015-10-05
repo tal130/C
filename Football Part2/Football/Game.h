@@ -12,7 +12,7 @@ using namespace std;
 class Game
 {
 public:
-	Game(const Stadium& stadium, Team& team1 , const Team& team2);
+	Game(const Stadium& stadium,const Team& team1 , const Team& team2);
 
 	void start() const; //Show the result of the game (randomly show a score and print the names of the players who scored..)
 
