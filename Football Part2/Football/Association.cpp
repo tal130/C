@@ -13,24 +13,16 @@ Association* Association::getInstance()
 	return &theAssociation;
 }
 
-Association::Association() : numberOfReferees(0), numberOfLeagues(0), leagues(NULL),referees(NULL){}
-Association::~Association(){
-	delete[] leagues;
-	delete referees;
-}
+Association::Association() : numberOfReferees(0), numberOfLeagues(0){}
 
 void Association::setNumOfLeagues(int num)
 {
-	delete[] leagues;
 	MAXnumberOfLeagues = num;
-	this->leagues = new const League*[MAXnumberOfLeagues];
 }
 
 void Association::setNumOfReferees(int num)
 {
-	delete referees;
 	MAXnumberOfReferees = num;
-	this->referees = new const Referee*[MAXnumberOfReferees];
 }
 
 void Association::start() const{
@@ -39,51 +31,58 @@ void Association::start() const{
 	}
 }
 
-void Association::addLeague(const League& league){ //problem- see document- also, do i need to throw error on maxoverlimit?
+void Association::addLeague(const League& league){
 	if (numberOfLeagues + 1 < MAXnumberOfReferees)
-		leagues[numberOfLeagues++] =  new League(league);
+		leagues.push_back(&league);
 }
-const League& Association::getLeague(const char* name) const{
-	for (int i = 0; i < numberOfLeagues; i++)
+
+const League& Association::getLeague(const string name) const{
+	vector<const League*>::const_iterator itr = leagues.begin();
+	vector<const League*>::const_iterator itrEnd = leagues.end();
+	for (; itr != itrEnd; itr++)
 	{
-		if (strcmp(leagues[i]->getName(), name) == 0)
-			return *leagues[i];
-	}
-		
-}
-void Association::removeLeague(const char* name){
-	for (int i = 0; i < numberOfLeagues; i++)
-	{
-		if (strcmp(leagues[i]->getName(), name) == 0){
-			delete leagues[i];
-			numberOfLeagues--;
-			for (int j = i ; j < numberOfLeagues; j++)
-				leagues[i] = leagues[i + 1];		
+		{
+			if ((*itr)->getName() == name)
+				return *(*itr);
 		}
 	}
-
+}
+void Association::removeLeague(const string name)
+{
+	vector<const League*>::const_iterator itr = leagues.begin();
+	vector<const League*>::const_iterator itrEnd = leagues.end();
+	for (; itr != itrEnd; itr++)
+	{
+		if ((*itr)->getName() == name)
+		{
+			leagues.erase(itr);
+			numberOfLeagues--;
+		}
+	}
 }
 
 void Association::addReferee(const Referee& referee){
 	if (numberOfReferees +1 < MAXnumberOfReferees)
-		referees[numberOfReferees++] = new Referee(referee);
+		referees.push_back(&referee);
 }
-const Referee& Association::getReferee(const char* name) const{
-	for (int i = 0; i < numberOfReferees; i++)
+const Referee& Association::getReferee(const string name) const{
+	vector<const Referee*>::const_iterator itr = referees.begin();
+	vector<const Referee*>::const_iterator itrEnd = referees.end();
+	for (; itr != itrEnd; itr++)
 	{
-		if (strcmp(referees[i]->getName(), name) == 0)
-			return *referees[i];
+		if ((*itr)->getName() == name)
+			return *(*itr);
 	}
 }
-void Association::removeReferee(const char* name){
-	for (int i = 0; i < numberOfReferees; i++)
+void Association::removeReferee(const string name){
+	vector<const Referee*>::const_iterator itr = referees.begin();
+	vector<const Referee*>::const_iterator itrEnd = referees.end();
+	for (; itr != itrEnd; itr++)
 	{
-		if (strcmp(referees[i]->getName(), name) == 0){
-			delete referees[i];
+		if ((*itr)->getName() == name)
+		{
+			referees.erase(itr);
 			numberOfReferees--;
-			for (int j = i; j < numberOfReferees; j++)
-				referees[i] = referees[i + 1];
-			//referees = (Referee**)realloc(referees, sizeof(Referee*)*numberOfReferees); -don't need cause you might want to add more
 		}
 	}
 

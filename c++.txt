@@ -1,0 +1,61 @@
+warning message:
+in the function get_team there we have warning that there is a possibility the funcion wont return anything
+which is correct. 
+
+const Team& League::getTeam(const string name) const{
+	vector<const Team*>::const_iterator itr = teams.begin();
+	vector<const Team*>::const_iterator itrEnd = teams.end();
+	for (; itr != itrEnd; itr++){
+		if (name == (*itr)->getName())
+		{
+			return *(*itr);
+		}
+	}
+	return ??????????
+}
+
+can't return NULL because we wait for &Team!!
+
+
+
+changes made:
+
+person const char* name (in the constructor) transform to const string name (is the const needed?)!!!!
+	copy, operator=, dtor all deleted
+	
+	
+StaffMember, nothing to change.								inherit person
+
+coach have only enum as attribute, nothing to change.		inherit StaffMember as virtual
+
+Player have only enum as attribute, nothing to change.		inherit StaffMember as virtual
+
+
+CoachPlayer inherit from coach and player, have no attributes, nothing to change.
+
+
+Stadium const char* name and location transform to const string name (is the const needed?)!!!!
+	copy, operator=, dtor all deleted
+	
+Referee have only enum as attribute, nothing to change.		inherit person
+
+Team:
+const char* name (in the constructor) transform to const string name
+const StaffMember** change to arraylist of const StaffMember*
+	copy, operator=, dtor all deleted
+	
+	
+Game, nothing to change.		need to add in part 2 operator= and dtor because we add dynamic array of refreese
+const refereese** change to vector of const refereese*
+
+league :
+const char* name (in the constructor) transform to const string name
+const teams** change to vector of const teams*
+const games** change to vector of const games*
+	copy, operator=, dtor all deleted
+
+Association:
+const leagues** change to vector of const leagues*
+const refereese** change to vector of const refereese*
+	copy, operator=, dtor all deleted
+	

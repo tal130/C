@@ -2,6 +2,7 @@
 #define _GAME_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #include "Stadium.h"
@@ -11,7 +12,7 @@ using namespace std;
 class Game
 {
 public:
-	Game(const Stadium& stadium, Team& team1 , const Team& team2 /*, const Referee referees[4]*/);
+	Game(const Stadium& stadium, Team& team1 , const Team& team2);
 
 	void start() const; //Show the result of the game (randomly show a score and print the names of the players who scored..)
 
@@ -29,7 +30,7 @@ private:
 	Stadium stadium;
 	Team team1;
 	Team team2;
-	Referee** referees;
+	vector<const Referee*> referees;
 	int sizeOfReferees;
 	static int MaxNumberOfReferees;
 

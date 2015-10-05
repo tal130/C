@@ -35,9 +35,6 @@ public:
 		~ArrayList(){
 			if (size > 0)
 				RecursiveDeleteArray(anchor);
-
-			//for (int i = 0; i < size; i++)
-			//	DeleteElement(0);// 0!!!!hhh
 		}
 
 		const ELEMENT operator [] (int num)const{
@@ -53,7 +50,7 @@ public:
 				return *d->data;
 			}
 		}
-		void InsertElement(ELEMENT& element, int index = 0){
+		void InsertElement(const ELEMENT& element, int index = 0){
 			if (size == 0){
 				anchor = new Node(element);
 			}
@@ -78,7 +75,7 @@ public:
 				}
 				size++;
 		}
-		void push(ELEMENT& element){
+		void push(const ELEMENT& element){
 			InsertElement(element, size); 
 		}
 		void DeleteElement(int index){

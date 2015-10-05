@@ -11,40 +11,41 @@ class Association
 {
 public:
 	static Association* getInstance();
-	~Association();
 
 	void start() const;//Start all the leagues games (go to all the leagues and start them)
 
 	void addLeague(const League& league);
-	const League& getLeague(const char* name) const;
-	void removeLeague(const char* name);
+	const League& getLeague(const string name) const;
+	void removeLeague(const string name);
 
 	void addReferee(const Referee& referee);
-	const Referee& getReferee(const char* name) const;
-	void removeReferee(const char* name);
+	const Referee& getReferee(const string name) const;
+	void removeReferee(const string name);
 
 	void setNumOfLeagues(int num);
 	void setNumOfReferees(int num);
 
 	friend ostream& operator<<(ostream& os, const Association& association)
 	{
-		os << "No Implementation" << std::endl;
+		os << "Association: " << std::endl;
+		vector<const League*>::const_iterator itr = association.leagues.begin();
+		vector<const League*>::const_iterator itrEnd = association.leagues.end();
+		for (; itr != itrEnd; itr++)
+			os << *(*itr) << std::endl;
 		return os;
 	}
 
 private:
-	const League** leagues;
+	vector<const League*> leagues;
 	int numberOfLeagues;
 	int MAXnumberOfLeagues;
-	const Referee** referees;
+	vector<const Referee*> referees;
 	int numberOfReferees;
 	int MAXnumberOfReferees;
 
 	static Association theAssociation;
 
 	Association();
-	Association(const Association& other);//Cannot duplicate an association
-	Association& operator=(const Association& other);
 };
 
 #endif // !_ASSOCIATION_H

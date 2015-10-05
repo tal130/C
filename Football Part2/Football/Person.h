@@ -2,18 +2,17 @@
 #define _PERSON_H
 
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 class Person
 {
 public:
-	Person(const char* name, int age);
-	Person(const Person& other);
-	~Person();
-	Person& operator=(const Person& other);
+	Person(const string name, int age);
 
-	const char* getName() const;
-	void setName(const char* name);
+	const string getName() const;
+	void setName(const string name);
 
 	int getAge() const;
 	void setAge(int age);
@@ -26,7 +25,7 @@ public:
 
 
 private:
-	char* name;
+	string name;
 	int age;
 
 

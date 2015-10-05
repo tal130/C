@@ -13,12 +13,6 @@ using namespace std;
 
 void main()
 {
-	ArrayList<Person> array2 = ArrayList<Person>();
-	array2.push(Person("Eran Zahavi", 21));
-	array2.push(Person("Eran Zahavi", 21));
-	array2.DeleteElement(0);
-	cout <<  array2 << endl;
-
 	//************************************ Create team 1 *********************************
 	//Create players for team 1
 	

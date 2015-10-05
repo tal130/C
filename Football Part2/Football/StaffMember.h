@@ -9,16 +9,16 @@ using namespace std;
 class StaffMember: public Person
 {
 public:
-	StaffMember(const Person& person, int sallary, int yearsOfExperience);// : Person(person), sallary(sallary), yearsOfExperience(yearsOfExperience){};
+	StaffMember(const Person& person, int sallary, int yearsOfExperience);
 	int getSallary() const;
 	void setSallary(int sallary);
 
 	int getYearsOfExperience() const;
 	void setYearsOfExperience(int yearsOfExperience);
 
-	friend ostream& operator<<(ostream& os, const StaffMember& league)
+	friend ostream& operator<<(ostream& os, const StaffMember& member)
 	{
-		os << "No Implementation" << std::endl;
+		os << "salary: " << member.sallary << "yearsOfExperience: " << member.yearsOfExperience << std::endl;
 		return os;
 	}
 

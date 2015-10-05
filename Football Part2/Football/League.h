@@ -2,6 +2,8 @@
 #define _LEAGUE_H
 
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
 
 #include "Team.h"
@@ -11,9 +13,6 @@ class League
 {
 public:
 	League(char* name, int numberOfTeams, int numberOfGames);
-	League(const League& other);
-	~League();
-	League& operator=(const League& other);
 
 	void start() const; //Start all the games in the league and remove them from the league
 
@@ -23,29 +22,33 @@ public:
 	const League& operator+=(const Game& game);//Add game to the league
 
 	void addTeam(const Team& team);//Use operator +=
-	const Team& getTeam(const char* name) const;
-	void removeTeam(const char* name);
+	const Team& getTeam(const string name) const;
+	void removeTeam(const string name);
 
-	const Team** const getAllTeams() const;
-	const Game** const getAllGames() const;
+	vector<const Team*> const getAllTeams() const;
+	vector<const Game*> const getAllGames() const;
 
-	const char* getName() const;
-	void setName(const char* name);
+	const string getName() const;
+	void setName(const string name);
 
 	friend ostream& operator<<(ostream& os, const League& league)
 	{
-		os << "No Implementation" << std::endl;
+		os << "league name: " << league.name << "teams:\n" << std::endl;
+		vector<const Team*>::const_iterator itr = league.teams.begin();
+		vector<const Team*>::const_iterator itrEnd = league.teams.end();
+		for (; itr != itrEnd ; itr++)
+			os << *(*itr) << std::endl;
 		return os;
 	}
 
 private:
 	int MAXnumberOfTeams;
 	int numberOfTeams;
-	const Team** teams;
+	vector<const Team*> teams;
 	int MAXnumberOfGames;
 	int numberOfGames;
-	const Game** games;
-	char* name;
+	vector<const Game*> games;
+	string name;
 
 };
 

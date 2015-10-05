@@ -6,38 +6,15 @@
 
 using namespace std;
 
-Stadium::Stadium(const char* name, int numberOfSeats, const char* location) : name(NULL), location(NULL)
+Stadium::Stadium(const string name, int numberOfSeats, const string location)
 {
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	this->name = name;
 	this->numberOfSeats = numberOfSeats;
-	this->location = new char[strlen(location) + 1];
-	strcpy(this->location, location);
+	this->location = location;
 }
-Stadium::Stadium(const Stadium& other) : name(NULL), location(NULL) 
-{
-	*this = other;
-}
-Stadium::~Stadium()
-{
-	delete[] this->name;
-	delete[] this->location;
-}
-
-
-Stadium& Stadium::operator=(const Stadium& other)
-{
-	setName(other.name);
-	
-	this->numberOfSeats = other.numberOfSeats;
-	this->location = new char[strlen(other.location) + 1];
-	strcpy(this->location, other.location);
-	return *this;
-}
-
 
 //getters
-const char* Stadium::getName() const
+const string Stadium::getName() const
 {
 	return this->name;
 }
@@ -45,24 +22,22 @@ int Stadium::getNumberOfSeats() const
 {
 	return this->numberOfSeats;
 }
-const char* Stadium::getLocation() const
+const string Stadium::getLocation() const
 {
 	return this->location;
 }
 
 //setters
-void Stadium::setName(const char* name)
+void Stadium::setName(const string name)
 {
 	
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	this->name = name;
 }
 void Stadium::setNumberOfSeats(int numberOfSeats)
 {
 	this->numberOfSeats = numberOfSeats;
 }
-void Stadium::setLocation(const char* location)
+void Stadium::setLocation(const string location)
 {
-	this->location = new char[strlen(location) + 1];
-	strcpy(this->location, location);
+	this->location = location;
 }

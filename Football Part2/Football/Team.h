@@ -6,14 +6,12 @@ using namespace std;
 
 #include "StaffMember.h"
 #include "Stadium.h"
+#include "ArrayList.h"
 
 class Team
 {
 public:
-	Team(const Stadium& stadium, int numberOfStaff, const char* name);
-	Team(const Team& other);
-	~Team();
-	Team& operator=(const Team& other);
+	Team(const Stadium& stadium, int numberOfStaff, const string name);
 
 	const Team& operator+=(const StaffMember& staffMember);
 	const Team& operator-=(const StaffMember& staffMember);
@@ -25,8 +23,8 @@ public:
 	const Stadium getStadium() const;
 	void setStadium(const Stadium& stadium);
 
-	const char* getName() const;
-	void setName(const char* name);
+	const string getName() const;
+	void setName(const string name);
 
 	friend ostream& operator<<(ostream& os, const Team& team)
 	{
@@ -35,9 +33,9 @@ public:
 	}
 
 private:
-	char* name;
+	string name;
 	int numberOfStaff;
-	const StaffMember** staff;
+	ArrayList<const StaffMember*> staff;
 	Stadium stadium;
 	int staffInTeam = 0;
 

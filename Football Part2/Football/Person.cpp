@@ -6,36 +6,14 @@
 
 using namespace std;
 
-Person::Person(const char* name, int age) : name(NULL)
+Person::Person(const string name, int age)
 {
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	this->name = name;
 	this->age = age;
 }
-Person::Person(const Person& other)
-{
-	*this = other;
-}
-Person::~Person()
-{
-	delete[] this->name;
-}
-
-
-Person& Person::operator=(const Person& other)
-{
-	//cout << other.name << strlen(other.name);
-	this->name = NULL;
-	delete[] this->name;
-	this->name = new char[strlen(other.name) + 1];
-	strcpy(this->name, other.name);
-	this->age = other.age;
-	return *this;
-}
-
 
 //getters
-const char* Person::getName() const
+const string Person::getName() const
 {
 	return this->name;
 }
@@ -45,10 +23,9 @@ int Person::getAge() const
 }
 
 //setters
-void Person::setName(const char* name)
+void Person::setName(const string name)
 {
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	this->name = name;
 }
 void Person::setAge(int age)
 {

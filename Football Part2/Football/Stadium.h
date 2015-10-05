@@ -2,24 +2,22 @@
 #define _STADIUM_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Stadium
 {
 public:
-	Stadium(const char* name, int numberOfSeats,const char* location);
-	Stadium(const Stadium& other);
-	~Stadium();
-	Stadium& operator=(const Stadium& other);
+	Stadium(const string name, int numberOfSeats, const string location);
 
-	const char* getName() const;
-	void setName(const char* name);
+	const string getName() const;
+	void setName(const string name);
 
 	int getNumberOfSeats() const;
 	void setNumberOfSeats(int numberOfSeats);
 
-	const char* getLocation() const;
-	void setLocation(const char* location);
+	const string getLocation() const;
+	void setLocation(const string location);
 
 	friend ostream& operator<<(ostream& os, const Stadium& stadium)
 	{
@@ -29,9 +27,9 @@ public:
 	}
 
 private:
-	char* name;
+	string name;
 	int numberOfSeats;
-	char* location;
+	string location;
 
 };
 
