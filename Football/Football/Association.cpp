@@ -34,7 +34,7 @@ const League& Association::getLeague(const char* name) const{
 		if (strcmp(leagues[i]->getName(), name) == 0)
 			return *leagues[i];
 	}
-		
+	throw "no such league exist";	
 }
 void Association::removeLeague(const char* name){
 	for (int i = 0; i < numberOfLeagues; i++)
@@ -61,6 +61,7 @@ const Referee& Association::getReferee(const char* name) const{
 		if (strcmp(referees[i]->getName(), name) == 0)
 			return *referees[i];
 	}
+	throw "no such referee exist";
 }
 void Association::removeReferee(const char* name){
 	for (int i = 0; i < numberOfReferees; i++)

@@ -51,6 +51,7 @@ const Team& League::getTeam(const string name) const{
 			return *(*itr);
 		}
 	}
+	throw "no such team exist";
 }
 void League::removeTeam(const string name){
 	vector<const Team*>::const_iterator itr = teams.begin();

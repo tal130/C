@@ -33,7 +33,7 @@ public:
 
 	friend ostream& operator<<(ostream& os, const League& league)
 	{
-		os << "league name: " << league.name << "teams:\n" << std::endl;
+		os << "league name: " << league.name << "\nteams:\n" << std::endl;
 		vector<const Team*>::const_iterator itr = league.teams.begin();
 		vector<const Team*>::const_iterator itrEnd = league.teams.end();
 		for (; itr != itrEnd ; itr++)

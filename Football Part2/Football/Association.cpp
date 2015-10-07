@@ -49,6 +49,7 @@ const League& Association::getLeague(const string name) const{
 				return *(*itr);
 		}
 	}
+	throw "no such league exist";
 }
 void Association::removeLeague(const string name)
 {
@@ -77,6 +78,7 @@ const Referee& Association::getReferee(const string name) const{
 		if ((*itr)->getName() == name)
 			return *(*itr);
 	}
+	throw "no such referee exist";
 }
 void Association::removeReferee(const string name){
 	vector<const Referee*>::const_iterator itr = referees.begin();

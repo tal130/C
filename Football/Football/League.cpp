@@ -78,7 +78,7 @@ const Team& League::getTeam(const char* name) const{
 			return *teams[i];
 		}
 	}
-	
+	throw "no such team exist";
 }
 void League::removeTeam(const char* name){
 	for (int i = 0; i < numberOfTeams; i++){

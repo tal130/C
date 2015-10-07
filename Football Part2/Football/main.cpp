@@ -130,6 +130,6 @@ void main()
 	//other unused operators
 	team1 -= player2;//Remove player from team
 	league1 -= team1;//remove team from league
-
+	
 	//return 0;
 }
