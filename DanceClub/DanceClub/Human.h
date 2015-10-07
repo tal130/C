@@ -17,11 +17,12 @@ class Human
 		Human(const char* name, int age);
 		Human(const Human&);
 		~Human();
+		Human& operator=(const Human& other);
 		
 		void setName(const char*);
 		const char* getName() const;
 		void setAge(const int);
-		const int getAge() const;
+		int getAge() const;
 		friend ostream& operator<<(ostream& os, const Human&);
 
 };

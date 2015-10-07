@@ -13,9 +13,13 @@ class DanceLine
 	public:
 		DanceLine(int startHour, Day startday, const Producer producer);
 
-		const DanceLine operator+(const int days) const;	//startday + days
+		const DanceLine operator+(int days) const;	//startday + days
 		const DanceLine& operator--();	//startday --
 		void setProducer(const Producer producer);	//set producer to DanceLine
+
+		int getStartHour()const;
+		int getStartDay()const;
+
 		friend ostream& operator<<(ostream& os, const Producer&);
 
 };

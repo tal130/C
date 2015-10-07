@@ -11,8 +11,7 @@ private:
 	double income;
 
 public:
-	ClubManager(Human& Human, const int expirienceYears, const int income);
-	ClubManager(const ClubManager&);
+	ClubManager(Human& Human, int expirienceYears, int income);
 
 	friend ostream& operator<<(ostream& os, const ClubManager&);
 };

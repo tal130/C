@@ -18,6 +18,7 @@ class Dancer : virtual public Human
 		Dancer(int level, const Human& human);
 		Dancer(const Dancer&);
 		~Dancer();
+		Dancer& operator=(const Dancer& other);
 		
 		void setStyle(const char*);
 		const char* getStyle() const;

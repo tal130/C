@@ -23,7 +23,8 @@ class Club
 	public:
 		Club(const ClubManager manager,const Address address, int maxPeople = 300, Team** team = nullptr);
 		Club(const Club&);
-		~Club();	
+		~Club();
+		Club& operator=(const Club& other);
 
 		void setManager(const ClubManager manager);	//set manager to club
 		void addTeam(const Team& team);		//add team to list of teams

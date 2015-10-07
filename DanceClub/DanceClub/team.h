@@ -17,6 +17,7 @@ public:
 	Team(const Teacher& teacher,int numOfDancers=10);
 	~Team();
 	Team(const Team&);
+	Team& operator=(const Team& other);
 
 	void addDancer(Dancer* dancer);
 	Teacher getTeacher();

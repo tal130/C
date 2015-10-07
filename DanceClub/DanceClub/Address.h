@@ -15,15 +15,16 @@ class Address
 		Address(const char* city, const char* street, int num, int zip);
 		Address(const Address&);
 		~Address();
+		Address& operator=(const Address& other);
 		
-		friend ostream& operator<<(ostream& os, const Address&);
 		void setCity(const char*);
 		const char* getCity() const;
 		void setStreet(const char*);
 		const char* getStreet() const;
 		void setNum(const int);
-		const int getNum() const;
+		int getNum() const;
 		void setZip(const int);
-		const int getZip() const;
+		int getZip() const;
+		friend ostream& operator<<(ostream& os, const Address&);
 };
 #endif //__ADDRESS_H

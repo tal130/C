@@ -13,8 +13,6 @@ class ClubsNetwork
 
 	public:
 		ClubsNetwork();
-		//ClubsNetwork(const ClubsNetwork&); Ok
-		//~ClubsNetwork(); ?why- in the end we need to destroy clubs
 		
 		void addClub(Club* club);
 		static Club* biggestClub();
